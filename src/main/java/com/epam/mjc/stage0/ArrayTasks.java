@@ -11,7 +11,7 @@ public class ArrayTasks {
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
     public String[] seasonsArray() {
-
+        return new String[]{"Winter", "Spring", "Summer", "Autumn"};
     }
 
     /**
@@ -25,7 +25,10 @@ public class ArrayTasks {
      * length = 5  -> [1, 2, 3, 4, 5]
      */
     public int[] generateNumbers(int length) {
-
+        int[] result = new int[length];
+        for (int i=0; i<length; i++)
+            result[i]=i+1;
+        return result;
     }
 
     /**
@@ -37,7 +40,10 @@ public class ArrayTasks {
      * arr = [5, -3, -4] -> sum = -2
      */
     public int totalSum(int[] arr) {
-
+        int result = 0;
+        for(int i=0; i<arr.length; i++)
+            result+=arr[i];
+        return result;
     }
 
     /**
@@ -50,7 +56,9 @@ public class ArrayTasks {
      * arr = [5, -3, -4],   number = 10    ->  -1
      */
     public int findIndexOfNumber(int[] arr, int number) {
-
+        for (int i=0; i<arr.length; i++)
+            if(arr[i] == number) return i;
+        return -1;
     }
 
     /**
@@ -63,7 +71,10 @@ public class ArrayTasks {
      * arr = ["pineapple", "apple", "pen"] -> ["pen", "apple", "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
-
+        String[] result = new String[arr.length];
+        for(int i=0; i<arr.length; i++)
+            result[i]=arr[arr.length-1-i];
+        return result;
     }
 
     /**
@@ -78,7 +89,13 @@ public class ArrayTasks {
      * arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-
+        int len = 0, index = 0;
+        for(int i=0; i<arr.length; i++)
+            if(arr[i]>0) len++;
+        int[] result = new int[len];
+        for(int i=0; i<arr.length; i++)
+            if(arr[i]>0) result[index++]=arr[i];
+        return result;
     }
 
     /**
@@ -92,6 +109,6 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-
+        return arr;
     }
 }
