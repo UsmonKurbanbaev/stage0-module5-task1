@@ -105,10 +105,61 @@ public class ArrayTasks {
      * <p>
      * Example:
      * <p>
-     * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]]
-     * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
+     * arr = [[3, 1, 2,], [3,2]] -> [[3, 2], [3, 1, 2]]
+     * arr = [[5, 4], [7]]       -> [[7], [5, 4]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
+        print(arr);
+        int indexOfMinLength, minLength;
+        for(int i=0; i<arr.length-1; i++){
+            minLength = arr[i].length;
+            indexOfMinLength = i;
+            for(int j=i+1; j<arr.length; j++){
+                if(minLength > arr[j].length){
+                    minLength = arr[j].length;
+                    indexOfMinLength = j;
+                }
+            }
+            if(i!=indexOfMinLength) {
+                int[] temp = arr[i];
+                arr[i] = arr[indexOfMinLength];
+                arr[indexOfMinLength] = temp;
+            }
+        }
+        for(int k=0; k<arr.length; k++)
+            sort(arr[k]);
+
+        print(arr);
         return arr;
+    }
+
+    public void sort(int[] arr) {
+        int minElemOfArr, indexOfMinElem;
+        for (int i = 0; i < arr.length-1; i++) {
+            minElemOfArr = arr[i];
+            indexOfMinElem = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (minElemOfArr > arr[j]) {
+                    minElemOfArr = arr[j];
+                    indexOfMinElem = j;
+                }
+            }
+            if (i != indexOfMinElem) {
+                int temp2 = arr[i];
+                arr[i] = arr[indexOfMinElem];
+                arr[indexOfMinElem] = temp2;
+            }
+        }
+    }
+
+    private void print(int[][] arr){
+        System.out.println();
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[i].length; j++){
+                System.out.print(" "+arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
